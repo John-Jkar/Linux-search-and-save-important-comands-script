@@ -1,0 +1,2701 @@
+[
+  {
+    "title": "Grep errors in syslog",
+    "command": "grep \"ERROR\" /var/log/syslog",
+    "description": "Search lines containing \"ERROR\" in syslog.",
+    "tags": [
+      "linux",
+      "logs",
+      "grep"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "-i",
+        "desc": "Case-insensitive search"
+      },
+      {
+        "flag": "-n",
+        "desc": "Show line numbers"
+      },
+      {
+        "flag": "-v",
+        "desc": "Invert match (exclude)"
+      },
+      {
+        "flag": "-r",
+        "desc": "Recursive search"
+      },
+      {
+        "flag": "-A 3",
+        "desc": "Show 3 lines after match"
+      },
+      {
+        "flag": "-B 3",
+        "desc": "Show 3 lines before match"
+      }
+    ]
+  },
+  {
+    "title": "List open ports (macOS)",
+    "command": "lsof -nP -iTCP -sTCP:LISTEN",
+    "description": "Show listening TCP ports (no DNS).",
+    "tags": [
+      "macOS",
+      "networking",
+      "lsof"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-n",
+        "desc": "No DNS resolution"
+      },
+      {
+        "flag": "-P",
+        "desc": "No port name resolution"
+      },
+      {
+        "flag": "-i",
+        "desc": "Internet connections only"
+      },
+      {
+        "flag": "-s",
+        "desc": "Show only specified states"
+      }
+    ]
+  },
+  {
+    "title": "Kill process by name",
+    "command": "pkill -f <name>",
+    "description": "Send SIGTERM to processes matching name.",
+    "tags": [
+      "linux",
+      "processes"
+    ],
+    "shell": "bash",
+    "danger": true,
+    "category": "processes",
+    "flags": [
+      {
+        "flag": "-f",
+        "desc": "Match full command line"
+      },
+      {
+        "flag": "-9",
+        "desc": "Force kill (SIGKILL)"
+      },
+      {
+        "flag": "-u user",
+        "desc": "Kill processes by user"
+      },
+      {
+        "flag": "-x",
+        "desc": "Exact match only"
+      }
+    ]
+  },
+  {
+    "title": "Tail file with colors",
+    "command": "tail -f app.log | ccze -A",
+    "description": "Follow log with colorized output using ccze.",
+    "tags": [
+      "linux",
+      "logs"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "-f",
+        "desc": "Follow file changes"
+      },
+      {
+        "flag": "-n 20",
+        "desc": "Show last 20 lines"
+      },
+      {
+        "flag": "-F",
+        "desc": "Follow with retry"
+      },
+      {
+        "flag": "-q",
+        "desc": "Quiet mode (no headers)"
+      }
+    ]
+  },
+  {
+    "title": "Find large files",
+    "command": "du -ah . | sort -h | tail -n 20",
+    "description": "Find the 20 largest files/directories.",
+    "tags": [
+      "linux",
+      "files",
+      "disk"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "files",
+    "flags": [
+      {
+        "flag": "-a",
+        "desc": "Include files (not just dirs)"
+      },
+      {
+        "flag": "-h",
+        "desc": "Human readable sizes"
+      },
+      {
+        "flag": "-s",
+        "desc": "Summary only"
+      },
+      {
+        "flag": "--max-depth=1",
+        "desc": "Limit directory depth"
+      }
+    ]
+  },
+  {
+    "title": "Check disk usage (human)",
+    "command": "df -h",
+    "description": "Mounted disks with human units.",
+    "tags": [
+      "disk",
+      "linux"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "files",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "Show git branch graph",
+    "command": "git log --oneline --graph --decorate --all",
+    "description": "Compact commit graph.",
+    "tags": [
+      "git"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "--oneline",
+        "desc": "Compact one-line format"
+      },
+      {
+        "flag": "--graph",
+        "desc": "Show branch graph"
+      },
+      {
+        "flag": "--all",
+        "desc": "Show all branches"
+      },
+      {
+        "flag": "--stat",
+        "desc": "Show file statistics"
+      }
+    ]
+  },
+  {
+    "title": "Copy public SSH key",
+    "command": "pbcopy < ~/.ssh/id_rsa.pub",
+    "description": "Copy your public key to clipboard (macOS).",
+    "tags": [
+      "ssh",
+      "macOS"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "Check Python package versions",
+    "command": "pip list --outdated",
+    "description": "List outdated installed packages.",
+    "tags": [
+      "python",
+      "pip"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "python",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "Rsync local → local (human, progress)",
+    "command": "rsync -avh --progress SRC/ DEST/",
+    "description": "Archive mode, human-readable, with progress. Trailing slash copies contents of SRC/.",
+    "tags": [
+      "rsync",
+      "copy",
+      "local",
+      "linux",
+      "macOS"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "transfer",
+    "flags": [
+      {
+        "flag": "-a",
+        "desc": "Archive mode (preserves permissions)"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      },
+      {
+        "flag": "-h",
+        "desc": "Human readable progress"
+      },
+      {
+        "flag": "--progress",
+        "desc": "Show transfer progress"
+      },
+      {
+        "flag": "--delete",
+        "desc": "Delete files not in source"
+      }
+    ]
+  },
+  {
+    "title": "Rsync over SSH (resume + compress)",
+    "command": "rsync -azP -e ssh SRC/ user@host:/path/",
+    "description": "Archive + compress, with partial/resume and progress. Uses SSH.",
+    "tags": [
+      "rsync",
+      "ssh",
+      "networking",
+      "linux",
+      "macOS"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-a",
+        "desc": "Archive mode (preserves permissions)"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      },
+      {
+        "flag": "-h",
+        "desc": "Human readable progress"
+      },
+      {
+        "flag": "--progress",
+        "desc": "Show transfer progress"
+      },
+      {
+        "flag": "--delete",
+        "desc": "Delete files not in source"
+      }
+    ]
+  },
+  {
+    "title": "Mirror with delete (dangerous)",
+    "command": "rsync -avh --delete SRC/ DEST/",
+    "description": "Make DEST a mirror of SRC (delete extraneous files).",
+    "tags": [
+      "rsync",
+      "backup",
+      "sync",
+      "linux",
+      "macOS"
+    ],
+    "shell": "bash",
+    "danger": true,
+    "category": "transfer",
+    "flags": [
+      {
+        "flag": "-a",
+        "desc": "Archive mode (preserves permissions)"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      },
+      {
+        "flag": "-h",
+        "desc": "Human readable progress"
+      },
+      {
+        "flag": "--progress",
+        "desc": "Show transfer progress"
+      },
+      {
+        "flag": "--delete",
+        "desc": "Delete files not in source"
+      }
+    ]
+  },
+  {
+    "title": "Rsync with checksum compare",
+    "command": "rsync -avh --checksum SRC/ DEST/",
+    "description": "Verify by checksums instead of modtime/size (slower).",
+    "tags": [
+      "rsync",
+      "integrity",
+      "linux",
+      "macOS"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "transfer",
+    "flags": [
+      {
+        "flag": "-a",
+        "desc": "Archive mode (preserves permissions)"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      },
+      {
+        "flag": "-h",
+        "desc": "Human readable progress"
+      },
+      {
+        "flag": "--progress",
+        "desc": "Show transfer progress"
+      },
+      {
+        "flag": "--delete",
+        "desc": "Delete files not in source"
+      }
+    ]
+  },
+  {
+    "title": "Rsync exclude patterns",
+    "command": "rsync -avh --exclude='.git' --exclude='node_modules' SRC/ DEST/",
+    "description": "Skip matching paths with --exclude; repeat for multiple patterns.",
+    "tags": [
+      "rsync",
+      "filters",
+      "linux",
+      "macOS"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "git",
+    "flags": [
+      {
+        "flag": "-a",
+        "desc": "Archive mode (preserves permissions)"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      },
+      {
+        "flag": "-h",
+        "desc": "Human readable progress"
+      },
+      {
+        "flag": "--progress",
+        "desc": "Show transfer progress"
+      },
+      {
+        "flag": "--delete",
+        "desc": "Delete files not in source"
+      }
+    ]
+  },
+  {
+    "title": "Rsync limit bandwidth (over SSH)",
+    "command": "rsync -azP --bwlimit=2m -e ssh SRC/ user@host:/path/",
+    "description": "Throttle transfer to ~2 MB/s to avoid saturating a link.",
+    "tags": [
+      "rsync",
+      "networking",
+      "throttle",
+      "linux",
+      "macOS"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-a",
+        "desc": "Archive mode (preserves permissions)"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      },
+      {
+        "flag": "-h",
+        "desc": "Human readable progress"
+      },
+      {
+        "flag": "--progress",
+        "desc": "Show transfer progress"
+      },
+      {
+        "flag": "--delete",
+        "desc": "Delete files not in source"
+      }
+    ]
+  },
+  {
+    "title": "Rsync 'mrchivas' mnemonic",
+    "command": "rsync -mrchivas SRC/ DEST/",
+    "description": "Mnemonic: -m prune-empty, -r recursive, -c checksum (slower), -h human, -i itemize, -v verbose, -a archive, -s safe. Note: -a already implies -r.",
+    "tags": [
+      "rsync",
+      "mnemonic",
+      "linux",
+      "macOS"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "transfer",
+    "flags": [
+      {
+        "flag": "-a",
+        "desc": "Archive mode (preserves permissions)"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      },
+      {
+        "flag": "-h",
+        "desc": "Human readable progress"
+      },
+      {
+        "flag": "--progress",
+        "desc": "Show transfer progress"
+      },
+      {
+        "flag": "--delete",
+        "desc": "Delete files not in source"
+      }
+    ]
+  },
+  {
+    "title": "Serve current folder (8000)",
+    "command": "python3 -m http.server 8000",
+    "description": "Quick static file server.",
+    "tags": [
+      "http",
+      "python",
+      "files"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "python",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "Watch unit logs (last 1h)",
+    "command": "journalctl -u nginx -S -1h -f",
+    "description": "Systemd logs for a unit since the last hour, then follow.",
+    "tags": [
+      "systemd",
+      "logs",
+      "linux"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "xargs parallel (4 jobs)",
+    "command": "find . -type f -name '*.log' -print0 | xargs -0 -n1 -P4 gzip -9",
+    "description": "Run up to 4 gzip jobs in parallel over found files.",
+    "tags": [
+      "xargs",
+      "parallel",
+      "commandline",
+      "linux",
+      "macOS"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "-name",
+        "desc": "Search by filename pattern"
+      },
+      {
+        "flag": "-type f",
+        "desc": "Files only"
+      },
+      {
+        "flag": "-type d",
+        "desc": "Directories only"
+      },
+      {
+        "flag": "-size +100M",
+        "desc": "Files larger than 100MB"
+      },
+      {
+        "flag": "-mtime -7",
+        "desc": "Modified in last 7 days"
+      }
+    ]
+  },
+  {
+    "title": "strace a PID (network only)",
+    "command": "sudo strace -p <pid> -f -e trace=network",
+    "description": "Attach to a process and trace only network syscalls (Linux).",
+    "tags": [
+      "strace",
+      "linux",
+      "debug"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cli",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "ltrace a PID (libs)",
+    "command": "sudo ltrace -p <pid>",
+    "description": "Trace library calls for a running process (Linux).",
+    "tags": [
+      "ltrace",
+      "linux",
+      "debug"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cli",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "sed show first 200 lines",
+    "command": "sed -n '1,200p' <file>",
+    "description": "Print a line range without paging.",
+    "tags": [
+      "sed",
+      "unix",
+      "text"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cli",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "dmesg recent (human time)",
+    "command": "dmesg -T | tail -n 50",
+    "description": "Kernel messages with human timestamps (last 50).",
+    "tags": [
+      "linux",
+      "kernel",
+      "dmesg"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cli",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "journalctl grep last 2h (follow)",
+    "command": "journalctl -S -2h -g 'ERROR|WARN' -f",
+    "description": "Filter systemd journal by regex since 2 hours ago and follow.",
+    "tags": [
+      "systemd",
+      "journalctl",
+      "logs",
+      "linux"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "systemctl show path + desc",
+    "command": "systemctl show nginx -p FragmentPath,Description",
+    "description": "Inspect unit file location and description.",
+    "tags": [
+      "systemd",
+      "linux"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "systemd",
+    "flags": [
+      {
+        "flag": "--failed",
+        "desc": "Show only failed services"
+      },
+      {
+        "flag": "--user",
+        "desc": "User services only"
+      },
+      {
+        "flag": "--no-pager",
+        "desc": "Don't use pager"
+      },
+      {
+        "flag": "-l",
+        "desc": "Show full output"
+      }
+    ]
+  },
+  {
+    "title": "ss filter: established to 443",
+    "command": "ss -tan state established '( dport = :443 )'",
+    "description": "List established TCP connections to destination port 443.",
+    "tags": [
+      "networking",
+      "ss",
+      "linux"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "sysctl read a key",
+    "command": "sysctl vm.swappiness",
+    "description": "Print current kernel param value (read-only).",
+    "tags": [
+      "linux",
+      "sysctl",
+      "tuning"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cli",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "docker compose logs (follow)",
+    "command": "docker compose logs -f <service>",
+    "description": "Follow logs for a specific Compose service.",
+    "tags": [
+      "docker",
+      "compose",
+      "logs",
+      "webdev"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "-f",
+        "desc": "Follow log output"
+      },
+      {
+        "flag": "-t",
+        "desc": "Show timestamps"
+      },
+      {
+        "flag": "--tail 100",
+        "desc": "Show last 100 lines"
+      },
+      {
+        "flag": "--since 1h",
+        "desc": "Show logs since 1 hour ago"
+      }
+    ]
+  },
+  {
+    "title": "nginx test & reload",
+    "command": "sudo nginx -t && sudo systemctl reload nginx",
+    "description": "Validate NGINX config then reload if ok.",
+    "tags": [
+      "nginx",
+      "webdev",
+      "linux"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "systemd",
+    "flags": [
+      {
+        "flag": "--failed",
+        "desc": "Show only failed services"
+      },
+      {
+        "flag": "--user",
+        "desc": "User services only"
+      },
+      {
+        "flag": "--no-pager",
+        "desc": "Don't use pager"
+      },
+      {
+        "flag": "-l",
+        "desc": "Show full output"
+      }
+    ]
+  },
+  {
+    "title": "curl verbose HEAD (HTTP/2)",
+    "command": "curl -vI --http2 https://example.com",
+    "description": "Fetch response headers with verbose TLS/HTTP/2 debug.",
+    "tags": [
+      "curl",
+      "http",
+      "tls",
+      "webdev"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "git worktree (checkout branch elsewhere)",
+    "command": "git worktree add ../feature feature",
+    "description": "Check out a branch into a sibling directory via worktree.",
+    "tags": [
+      "git",
+      "worktree",
+      "webdev"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "git",
+    "flags": [
+      {
+        "flag": "--oneline",
+        "desc": "Compact one-line format"
+      },
+      {
+        "flag": "--graph",
+        "desc": "Show branch graph"
+      },
+      {
+        "flag": "--all",
+        "desc": "Show all branches"
+      },
+      {
+        "flag": "--stat",
+        "desc": "Show file statistics"
+      }
+    ]
+  },
+  {
+    "title": "kubectl logs deployment (follow)",
+    "command": "kubectl logs deploy/myapp -f --tail=200",
+    "description": "Follow last 200 lines of logs from a deployment.",
+    "tags": [
+      "kubernetes",
+      "kubectl",
+      "logs",
+      "devops"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "kubectl port-forward service",
+    "command": "kubectl port-forward svc/myapp 8080:80",
+    "description": "Forward localhost:8080 to service port 80.",
+    "tags": [
+      "kubernetes",
+      "kubectl",
+      "networking",
+      "devops"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "kubectl rollout status",
+    "command": "kubectl rollout status deploy/myapp",
+    "description": "Watch the rollout of a deployment.",
+    "tags": [
+      "kubernetes",
+      "kubectl",
+      "deploy",
+      "devops"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cli",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "Extract tar archive (auto)",
+    "command": "tar xf file.tar.gz",
+    "description": "GNU tar and bsdtar auto-detect compression; no -z needed. Add v for progress: `tar xvf file.tar.gz`.",
+    "tags": [
+      "archives",
+      "linux",
+      "tar"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cli",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "List tar contents",
+    "command": "tar tf file.tar.gz",
+    "description": "Preview what’s inside without extracting. Add v for details: `tar tvf file.tar.gz`.",
+    "tags": [
+      "archives",
+      "linux",
+      "tar"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cli",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "Create gzipped tar",
+    "command": "tar czf out.tar.gz dir/",
+    "description": "Create a .tar.gz from a directory. (GNU tar: `tar caf out.tar.xz dir/` auto-picks compression by suffix.)",
+    "tags": [
+      "archives",
+      "linux",
+      "tar"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cli",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "Tail live Docker logs",
+    "command": "docker logs -f <container_name>",
+    "description": "Tail live logs from a running container (like tail -f for Docker). Use -t for timestamps if you need them. Great for 2AM debugging without SSHing in.",
+    "tags": [
+      "docker",
+      "logs",
+      "debugging"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "-f",
+        "desc": "Follow log output"
+      },
+      {
+        "flag": "-t",
+        "desc": "Show timestamps"
+      },
+      {
+        "flag": "--tail 100",
+        "desc": "Show last 100 lines"
+      },
+      {
+        "flag": "--since 1h",
+        "desc": "Show logs since 1 hour ago"
+      }
+    ]
+  },
+  {
+    "title": "List containers in table format",
+    "command": "docker ps -a --format \"table {{.Names}}\\t{{.Status}}\\t{{.Ports}}\"",
+    "description": "List all containers (running/stopped) in a clean table format. Add --filter \"status=exited\" to focus on crashed ones for cleanup.",
+    "tags": [
+      "docker",
+      "containers",
+      "debugging"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "processes",
+    "flags": [
+      {
+        "flag": "-f",
+        "desc": "Follow log output"
+      },
+      {
+        "flag": "-t",
+        "desc": "Show timestamps"
+      },
+      {
+        "flag": "--tail 100",
+        "desc": "Show last 100 lines"
+      },
+      {
+        "flag": "--since 1h",
+        "desc": "Show logs since 1 hour ago"
+      }
+    ]
+  },
+  {
+    "title": "Build Docker image (no cache)",
+    "command": "docker build -t app:latest . --no-cache --progress=plain",
+    "description": "Build an image from Dockerfile in the current dir, no cache for fresh deps, plain output for easy reading. Bump to :v1.2 for versioning.",
+    "tags": [
+      "docker",
+      "build",
+      "development"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "-f",
+        "desc": "Follow log output"
+      },
+      {
+        "flag": "-t",
+        "desc": "Show timestamps"
+      },
+      {
+        "flag": "--tail 100",
+        "desc": "Show last 100 lines"
+      },
+      {
+        "flag": "--since 1h",
+        "desc": "Show logs since 1 hour ago"
+      }
+    ]
+  },
+  {
+    "title": "Docker Compose with scaling",
+    "command": "docker compose up -d --build --scale web=3",
+    "description": "Spin up services in detached mode, rebuild if changed, scale replicas (e.g., 3 web instances). Add --force-recreate to nuke and restart everything.",
+    "tags": [
+      "docker",
+      "compose",
+      "scaling"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "-f",
+        "desc": "Follow log output"
+      },
+      {
+        "flag": "-t",
+        "desc": "Show timestamps"
+      },
+      {
+        "flag": "--tail 100",
+        "desc": "Show last 100 lines"
+      },
+      {
+        "flag": "--since 1h",
+        "desc": "Show logs since 1 hour ago"
+      }
+    ]
+  },
+  {
+    "title": "List failed services",
+    "command": "systemctl list-units --type=service --state=failed",
+    "description": "List only failed services for quick triage. Pair with journalctl -u failed.service to dive into logs—saves hunting through full status outputs.",
+    "tags": [
+      "systemd",
+      "linux",
+      "troubleshooting"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "systemd",
+    "flags": [
+      {
+        "flag": "--failed",
+        "desc": "Show only failed services"
+      },
+      {
+        "flag": "--user",
+        "desc": "User services only"
+      },
+      {
+        "flag": "--no-pager",
+        "desc": "Don't use pager"
+      },
+      {
+        "flag": "-l",
+        "desc": "Show full output"
+      }
+    ]
+  },
+  {
+    "title": "Mask/unmask service",
+    "command": "systemctl mask <service> && systemctl unmask <service>",
+    "description": "Temporarily disable a service (mask prevents enabling/starting); unmask to restore. Useful for safe testing without full removal—e.g., mask a buggy cron job.",
+    "tags": [
+      "systemd",
+      "linux",
+      "services"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "systemd",
+    "flags": [
+      {
+        "flag": "--failed",
+        "desc": "Show only failed services"
+      },
+      {
+        "flag": "--user",
+        "desc": "User services only"
+      },
+      {
+        "flag": "--no-pager",
+        "desc": "Don't use pager"
+      },
+      {
+        "flag": "-l",
+        "desc": "Show full output"
+      }
+    ]
+  },
+  {
+    "title": "Edit service config inline",
+    "command": "systemctl edit <service>",
+    "description": "Override a service's config inline (creates a drop-in file). E.g., add [Service] Environment=DEBUG=true—reload with systemctl daemon-reload after.",
+    "tags": [
+      "systemd",
+      "linux",
+      "configuration"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "systemd",
+    "flags": [
+      {
+        "flag": "--failed",
+        "desc": "Show only failed services"
+      },
+      {
+        "flag": "--user",
+        "desc": "User services only"
+      },
+      {
+        "flag": "--no-pager",
+        "desc": "Don't use pager"
+      },
+      {
+        "flag": "-l",
+        "desc": "Show full output"
+      }
+    ]
+  },
+  {
+    "title": "Filter service logs by error level",
+    "command": "journalctl -u <service> -p err -S @yesterday",
+    "description": "Filter error-level logs for a service since yesterday (@yesterday is a relative time spec). Add -o json for parseable output in scripts.",
+    "tags": [
+      "systemd",
+      "linux",
+      "logs"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "logs",
+    "flags": [
+      {
+        "flag": "-h",
+        "desc": "Show help"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose output"
+      }
+    ]
+  },
+  {
+    "title": "Show service properties",
+    "command": "systemctl show <service> -p LoadState,ActiveState",
+    "description": "Show specific properties (load/active state) for a service. Pipe to grep for automation: `systemctl show nginx -p ActiveState | grep Active`.",
+    "tags": [
+      "systemd",
+      "linux",
+      "automation"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "systemd",
+    "flags": [
+      {
+        "flag": "--failed",
+        "desc": "Show only failed services"
+      },
+      {
+        "flag": "--user",
+        "desc": "User services only"
+      },
+      {
+        "flag": "--no-pager",
+        "desc": "Don't use pager"
+      },
+      {
+        "flag": "-l",
+        "desc": "Show full output"
+      }
+    ]
+  },
+  {
+    "title": "Unit logs (last hour)",
+    "command": "journalctl -u nginx -S -1h",
+    "description": "Show logs for a systemd unit since the last hour.",
+    "tags": [
+      "linux",
+      "systemd",
+      "logs"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "systemd",
+    "flags": [
+      {
+        "flag": "-u service",
+        "desc": "Show logs for specific unit"
+      },
+      {
+        "flag": "-S -1h",
+        "desc": "Since 1 hour ago (also: -1d, -10m)"
+      },
+      {
+        "flag": "-f",
+        "desc": "Follow new log entries"
+      },
+      {
+        "flag": "-n 50",
+        "desc": "Show last 50 lines"
+      },
+      {
+        "flag": "-p err",
+        "desc": "Show only error level and above"
+      },
+      {
+        "flag": "--no-pager",
+        "desc": "Don't use pager (for scripts)"
+      }
+    ]
+  },
+  {
+    "title": "Who's listening (Linux)",
+    "command": "ss -tulpn | grep LISTEN",
+    "description": "List listening TCP/UDP sockets with owning PIDs.",
+    "tags": [
+      "networking",
+      "linux",
+      "ss"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-t",
+        "desc": "Show TCP sockets"
+      },
+      {
+        "flag": "-u",
+        "desc": "Show UDP sockets"
+      },
+      {
+        "flag": "-l",
+        "desc": "Show only listening sockets"
+      },
+      {
+        "flag": "-p",
+        "desc": "Show process using socket"
+      },
+      {
+        "flag": "-n",
+        "desc": "Don't resolve service names"
+      },
+      {
+        "flag": "-4",
+        "desc": "IPv4 only"
+      },
+      {
+        "flag": "-6",
+        "desc": "IPv6 only"
+      }
+    ]
+  },
+  {
+    "title": "Top dirs by size (root)",
+    "command": "du -xhd1 / | sort -h | tail",
+    "description": "Disk triage without crossing filesystems (-x).",
+    "tags": [
+      "disk",
+      "linux",
+      "du"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "files",
+    "flags": [
+      {
+        "flag": "-x",
+        "desc": "Don't cross filesystem boundaries"
+      },
+      {
+        "flag": "-h",
+        "desc": "Human readable sizes (K, M, G)"
+      },
+      {
+        "flag": "-d1",
+        "desc": "Max depth 1 (don't recurse)"
+      },
+      {
+        "flag": "-s",
+        "desc": "Summary only (same as -d0)"
+      },
+      {
+        "flag": "-c",
+        "desc": "Show grand total"
+      },
+      {
+        "flag": "--exclude=pattern",
+        "desc": "Exclude files matching pattern"
+      }
+    ]
+  },
+  {
+    "title": "Processes by memory",
+    "command": "ps aux --sort=-%mem | head -n 15",
+    "description": "Quick memory hogs overview.",
+    "tags": [
+      "linux",
+      "processes",
+      "ps"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "processes",
+    "flags": [
+      {
+        "flag": "aux",
+        "desc": "All processes, user format, include no-tty"
+      },
+      {
+        "flag": "--sort=-%mem",
+        "desc": "Sort by memory (descending)"
+      },
+      {
+        "flag": "--sort=%cpu",
+        "desc": "Sort by CPU usage"
+      },
+      {
+        "flag": "--no-headers",
+        "desc": "Skip header line"
+      },
+      {
+        "flag": "-o pid,user,%mem,command",
+        "desc": "Custom output format"
+      },
+      {
+        "flag": "-C command",
+        "desc": "Show only specific command"
+      }
+    ]
+  },
+  {
+    "title": "List tar contents",
+    "command": "tar tf file.tar.gz",
+    "description": "Preview archive without extracting (add v for details).",
+    "tags": [
+      "archives",
+      "linux",
+      "tar"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "files",
+    "flags": [
+      {
+        "flag": "t",
+        "desc": "List contents (table of contents)"
+      },
+      {
+        "flag": "f file",
+        "desc": "Use archive file"
+      },
+      {
+        "flag": "v",
+        "desc": "Verbose (show permissions, dates)"
+      },
+      {
+        "flag": "z",
+        "desc": "Handle gzip compression"
+      },
+      {
+        "flag": "j",
+        "desc": "Handle bzip2 compression"
+      },
+      {
+        "flag": "J",
+        "desc": "Handle xz compression"
+      }
+    ]
+  },
+  {
+    "title": "Create gzipped tar",
+    "command": "tar czf out.tar.gz dir/",
+    "description": "Make a .tar.gz from a directory.",
+    "tags": [
+      "archives",
+      "linux",
+      "tar"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "files",
+    "flags": [
+      {
+        "flag": "c",
+        "desc": "Create new archive"
+      },
+      {
+        "flag": "z",
+        "desc": "Compress with gzip"
+      },
+      {
+        "flag": "f file",
+        "desc": "Archive filename"
+      },
+      {
+        "flag": "v",
+        "desc": "Verbose (show files being added)"
+      },
+      {
+        "flag": "--exclude=pattern",
+        "desc": "Exclude files matching pattern"
+      },
+      {
+        "flag": "-C dir",
+        "desc": "Change to directory first"
+      }
+    ]
+  },
+  {
+    "title": "Docker logs (tail 10m)",
+    "command": "docker logs -f --since=10m svc",
+    "description": "Follow container logs since 10 minutes ago.",
+    "tags": [
+      "docker",
+      "logs"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "-f",
+        "desc": "Follow log output"
+      },
+      {
+        "flag": "--since=10m",
+        "desc": "Show logs since 10 minutes ago"
+      },
+      {
+        "flag": "--tail=100",
+        "desc": "Show last 100 lines"
+      },
+      {
+        "flag": "-t",
+        "desc": "Show timestamps"
+      },
+      {
+        "flag": "--until=2023-01-01",
+        "desc": "Show logs until specific time"
+      },
+      {
+        "flag": "--details",
+        "desc": "Show extra details"
+      }
+    ]
+  },
+  {
+    "title": "Docker ps (nice table)",
+    "command": "docker ps --format 'table {{.Names}}\\t{{.Ports}}\\t{{.Status}}'",
+    "description": "Readable container list.",
+    "tags": [
+      "docker"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "--format table",
+        "desc": "Table format with headers"
+      },
+      {
+        "flag": "{{.Names}}",
+        "desc": "Container names column"
+      },
+      {
+        "flag": "{{.Image}}",
+        "desc": "Image name column"
+      },
+      {
+        "flag": "{{.Status}}",
+        "desc": "Container status column"
+      },
+      {
+        "flag": "{{.Ports}}",
+        "desc": "Port mappings column"
+      },
+      {
+        "flag": "-a",
+        "desc": "Show all containers (not just running)"
+      }
+    ]
+  },
+  {
+    "title": "Docker compose up (detached)",
+    "command": "docker compose up -d",
+    "description": "Spin services in the background.",
+    "tags": [
+      "docker",
+      "compose"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "-d",
+        "desc": "Detached mode (run in background)"
+      },
+      {
+        "flag": "--build",
+        "desc": "Build images before starting"
+      },
+      {
+        "flag": "--force-recreate",
+        "desc": "Recreate containers even if config unchanged"
+      },
+      {
+        "flag": "--scale web=3",
+        "desc": "Scale service to 3 instances"
+      },
+      {
+        "flag": "--remove-orphans",
+        "desc": "Remove containers for services not in compose file"
+      },
+      {
+        "flag": "service_name",
+        "desc": "Start only specific service"
+      }
+    ]
+  },
+  {
+    "title": "Quick static server (Web)",
+    "command": "npx serve -s dist",
+    "description": "Serve a build directory locally.",
+    "tags": [
+      "webdev",
+      "node",
+      "npx"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "webdev",
+    "flags": [
+      {
+        "flag": "-s",
+        "desc": "Single page app mode (SPA)"
+      },
+      {
+        "flag": "-p 3000",
+        "desc": "Use specific port"
+      },
+      {
+        "flag": "-l",
+        "desc": "Enable directory listing"
+      },
+      {
+        "flag": "--cors",
+        "desc": "Enable CORS headers"
+      },
+      {
+        "flag": "--no-clipboard",
+        "desc": "Don't copy URL to clipboard"
+      },
+      {
+        "flag": "--ssl-cert",
+        "desc": "Path to SSL certificate"
+      }
+    ]
+  },
+  {
+    "title": "Check site headers",
+    "command": "curl -I https://example.com",
+    "description": "Fetch response headers only.",
+    "tags": [
+      "webdev",
+      "http",
+      "curl"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-I",
+        "desc": "HEAD request (headers only)"
+      },
+      {
+        "flag": "-v",
+        "desc": "Verbose (show request headers too)"
+      },
+      {
+        "flag": "-L",
+        "desc": "Follow redirects"
+      },
+      {
+        "flag": "-k",
+        "desc": "Ignore SSL certificate errors"
+      },
+      {
+        "flag": "-H 'Header: value'",
+        "desc": "Add custom header"
+      },
+      {
+        "flag": "-A 'User-Agent'",
+        "desc": "Set user agent string"
+      }
+    ]
+  },
+  {
+    "title": "TLS expiry (dates only)",
+    "command": "openssl s_client -connect example.com:443 -servername example.com -showcerts </dev/null 2>/dev/null | openssl x509 -noout -dates",
+    "description": "See cert notBefore/notAfter for a host.",
+    "tags": [
+      "tls",
+      "openssl",
+      "certs"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-connect host:port",
+        "desc": "Connect to specific host and port"
+      },
+      {
+        "flag": "-servername host",
+        "desc": "SNI hostname for virtual hosts"
+      },
+      {
+        "flag": "-showcerts",
+        "desc": "Show full certificate chain"
+      },
+      {
+        "flag": "-noout",
+        "desc": "Don't output certificate"
+      },
+      {
+        "flag": "-dates",
+        "desc": "Show notBefore and notAfter dates"
+      },
+      {
+        "flag": "-subject",
+        "desc": "Show certificate subject"
+      },
+      {
+        "flag": "-issuer",
+        "desc": "Show certificate issuer"
+      }
+    ]
+  },
+  {
+    "title": "Interactive shell in container",
+    "command": "docker exec -it <container> bash",
+    "description": "Open an interactive bash shell inside a running container for debugging and exploration.",
+    "tags": [
+      "docker",
+      "debugging",
+      "shell"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "-i",
+        "desc": "Keep STDIN open (interactive)"
+      },
+      {
+        "flag": "-t",
+        "desc": "Allocate a pseudo-TTY (terminal)"
+      },
+      {
+        "flag": "-u user",
+        "desc": "Run as specific user"
+      },
+      {
+        "flag": "-w /path",
+        "desc": "Set working directory"
+      },
+      {
+        "flag": "-e VAR=value",
+        "desc": "Set environment variable"
+      },
+      {
+        "flag": "--privileged",
+        "desc": "Give extended privileges"
+      }
+    ]
+  },
+  {
+    "title": "Build Docker image",
+    "command": "docker build -t myapp:latest .",
+    "description": "Build a Docker image from Dockerfile in current directory with a tag.",
+    "tags": [
+      "docker",
+      "build",
+      "images"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "-t name:tag",
+        "desc": "Tag the image with name and version"
+      },
+      {
+        "flag": "-f Dockerfile",
+        "desc": "Use specific Dockerfile"
+      },
+      {
+        "flag": "--no-cache",
+        "desc": "Don't use cache when building"
+      },
+      {
+        "flag": "--build-arg KEY=value",
+        "desc": "Set build-time variables"
+      },
+      {
+        "flag": "--target stage",
+        "desc": "Build specific stage in multi-stage"
+      },
+      {
+        "flag": "--platform linux/amd64",
+        "desc": "Set target platform"
+      }
+    ]
+  },
+  {
+    "title": "List Docker networks",
+    "command": "docker network ls",
+    "description": "Show all Docker networks and their drivers.",
+    "tags": [
+      "docker",
+      "networking"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "-q",
+        "desc": "Only show network IDs"
+      },
+      {
+        "flag": "--filter driver=bridge",
+        "desc": "Filter by driver type"
+      },
+      {
+        "flag": "--filter name=pattern",
+        "desc": "Filter by name pattern"
+      },
+      {
+        "flag": "--format table",
+        "desc": "Format output as table"
+      },
+      {
+        "flag": "--no-trunc",
+        "desc": "Don't truncate output"
+      }
+    ]
+  },
+  {
+    "title": "Create Docker network",
+    "command": "docker network create --driver bridge mynetwork",
+    "description": "Create a custom Docker network for container communication.",
+    "tags": [
+      "docker",
+      "networking"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "--driver bridge",
+        "desc": "Network driver (bridge, overlay, host)"
+      },
+      {
+        "flag": "--subnet 172.20.0.0/16",
+        "desc": "Subnet in CIDR format"
+      },
+      {
+        "flag": "--gateway 172.20.0.1",
+        "desc": "Gateway IP address"
+      },
+      {
+        "flag": "--ip-range 172.20.240.0/20",
+        "desc": "Allocate container IPs from range"
+      },
+      {
+        "flag": "--attachable",
+        "desc": "Enable manual container attachment"
+      },
+      {
+        "flag": "--internal",
+        "desc": "Restrict external access"
+      }
+    ]
+  },
+  {
+    "title": "List Docker volumes",
+    "command": "docker volume ls",
+    "description": "Show all Docker volumes for persistent data storage.",
+    "tags": [
+      "docker",
+      "storage",
+      "volumes"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "-q",
+        "desc": "Only show volume names"
+      },
+      {
+        "flag": "--filter dangling=true",
+        "desc": "Show unused volumes"
+      },
+      {
+        "flag": "--filter driver=local",
+        "desc": "Filter by driver"
+      },
+      {
+        "flag": "--filter name=pattern",
+        "desc": "Filter by name pattern"
+      },
+      {
+        "flag": "--format table",
+        "desc": "Format output as table"
+      }
+    ]
+  },
+  {
+    "title": "Create Docker volume",
+    "command": "docker volume create --driver local myvolume",
+    "description": "Create a named volume for persistent container data.",
+    "tags": [
+      "docker",
+      "storage",
+      "volumes"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "--driver local",
+        "desc": "Volume driver (local, nfs, etc.)"
+      },
+      {
+        "flag": "--opt type=tmpfs",
+        "desc": "Driver-specific options"
+      },
+      {
+        "flag": "--opt device=/dev/sdb",
+        "desc": "Mount specific device"
+      },
+      {
+        "flag": "--label key=value",
+        "desc": "Set metadata labels"
+      }
+    ]
+  },
+  {
+    "title": "Docker system cleanup",
+    "command": "docker system prune -a",
+    "description": "Remove unused containers, networks, images, and build cache to free space.",
+    "tags": [
+      "docker",
+      "cleanup",
+      "maintenance"
+    ],
+    "shell": "bash",
+    "danger": true,
+    "category": "docker",
+    "flags": [
+      {
+        "flag": "-a",
+        "desc": "Remove all unused images, not just dangling"
+      },
+      {
+        "flag": "-f",
+        "desc": "Force removal without confirmation"
+      },
+      {
+        "flag": "--volumes",
+        "desc": "Also remove unused volumes"
+      },
+      {
+        "flag": "--filter until=24h",
+        "desc": "Only remove items older than 24h"
+      },
+      {
+        "flag": "--filter label=key",
+        "desc": "Only remove items with label"
+      }
+    ]
+  },
+  {
+    "title": "List pods with details",
+    "command": "kubectl get pods -o wide",
+    "description": "Show pods with additional details like node placement and IP addresses.",
+    "tags": [
+      "kubernetes",
+      "pods",
+      "kubectl"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "kubernetes",
+    "flags": [
+      {
+        "flag": "-o wide",
+        "desc": "Show additional columns (node, IP)"
+      },
+      {
+        "flag": "-o yaml",
+        "desc": "Output in YAML format"
+      },
+      {
+        "flag": "-o json",
+        "desc": "Output in JSON format"
+      },
+      {
+        "flag": "--all-namespaces",
+        "desc": "Show pods from all namespaces"
+      },
+      {
+        "flag": "-n namespace",
+        "desc": "Show pods from specific namespace"
+      },
+      {
+        "flag": "--watch",
+        "desc": "Watch for changes"
+      }
+    ]
+  },
+  {
+    "title": "Describe Kubernetes pod",
+    "command": "kubectl describe pod <pod-name>",
+    "description": "Get detailed information about a pod including events and configuration.",
+    "tags": [
+      "kubernetes",
+      "debugging",
+      "kubectl"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "kubernetes",
+    "flags": [
+      {
+        "flag": "-n namespace",
+        "desc": "Specify namespace"
+      },
+      {
+        "flag": "--show-events=false",
+        "desc": "Hide events section"
+      },
+      {
+        "flag": "-f file.yaml",
+        "desc": "Describe resource from file"
+      },
+      {
+        "flag": "-l label=value",
+        "desc": "Select by label"
+      }
+    ]
+  },
+  {
+    "title": "Follow pod logs",
+    "command": "kubectl logs -f <pod-name>",
+    "description": "Stream live logs from a Kubernetes pod for real-time monitoring.",
+    "tags": [
+      "kubernetes",
+      "logs",
+      "kubectl"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "kubernetes",
+    "flags": [
+      {
+        "flag": "-f",
+        "desc": "Follow log output (stream)"
+      },
+      {
+        "flag": "-c container",
+        "desc": "Specify container in multi-container pod"
+      },
+      {
+        "flag": "--tail=100",
+        "desc": "Show last 100 lines"
+      },
+      {
+        "flag": "--since=1h",
+        "desc": "Show logs since 1 hour ago"
+      },
+      {
+        "flag": "-n namespace",
+        "desc": "Specify namespace"
+      },
+      {
+        "flag": "--previous",
+        "desc": "Show logs from previous container instance"
+      }
+    ]
+  },
+  {
+    "title": "Execute in Kubernetes pod",
+    "command": "kubectl exec -it <pod-name> -- bash",
+    "description": "Open interactive shell in a Kubernetes pod for debugging.",
+    "tags": [
+      "kubernetes",
+      "debugging",
+      "kubectl"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "kubernetes",
+    "flags": [
+      {
+        "flag": "-i",
+        "desc": "Keep STDIN open"
+      },
+      {
+        "flag": "-t",
+        "desc": "Allocate TTY"
+      },
+      {
+        "flag": "-c container",
+        "desc": "Specify container in multi-container pod"
+      },
+      {
+        "flag": "-n namespace",
+        "desc": "Specify namespace"
+      },
+      {
+        "flag": "--",
+        "desc": "Separator between kubectl and container command"
+      }
+    ]
+  },
+  {
+    "title": "Git log with graph",
+    "command": "git log --oneline --graph --all",
+    "description": "Visual commit history with branch structure in compact format.",
+    "tags": [
+      "git",
+      "history",
+      "visualization"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "git",
+    "flags": [
+      {
+        "flag": "--oneline",
+        "desc": "Compact one-line format"
+      },
+      {
+        "flag": "--graph",
+        "desc": "Show ASCII graph of branch structure"
+      },
+      {
+        "flag": "--all",
+        "desc": "Show all branches and tags"
+      },
+      {
+        "flag": "--decorate",
+        "desc": "Show branch and tag names"
+      },
+      {
+        "flag": "-n 10",
+        "desc": "Limit to 10 commits"
+      },
+      {
+        "flag": "--since='2 weeks ago'",
+        "desc": "Show commits since date"
+      }
+    ]
+  },
+  {
+    "title": "Git hard reset",
+    "command": "git reset --hard HEAD~1",
+    "description": "Permanently undo last commit and all changes (destructive operation).",
+    "tags": [
+      "git",
+      "reset",
+      "undo"
+    ],
+    "shell": "bash",
+    "danger": true,
+    "category": "git",
+    "flags": [
+      {
+        "flag": "--hard",
+        "desc": "Reset index and working tree (destructive)"
+      },
+      {
+        "flag": "--soft",
+        "desc": "Keep changes in staging area"
+      },
+      {
+        "flag": "--mixed",
+        "desc": "Keep changes in working directory"
+      },
+      {
+        "flag": "HEAD~1",
+        "desc": "Go back 1 commit"
+      },
+      {
+        "flag": "HEAD~3",
+        "desc": "Go back 3 commits"
+      },
+      {
+        "flag": "commit-hash",
+        "desc": "Reset to specific commit"
+      }
+    ]
+  },
+  {
+    "title": "Git stash with message",
+    "command": "git stash push -m \"work in progress\"",
+    "description": "Save current changes with descriptive message for later retrieval.",
+    "tags": [
+      "git",
+      "stash",
+      "temporary"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "git",
+    "flags": [
+      {
+        "flag": "push",
+        "desc": "Save changes to stash"
+      },
+      {
+        "flag": "-m message",
+        "desc": "Add descriptive message"
+      },
+      {
+        "flag": "-u",
+        "desc": "Include untracked files"
+      },
+      {
+        "flag": "-a",
+        "desc": "Include ignored files too"
+      },
+      {
+        "flag": "-- file.txt",
+        "desc": "Stash only specific files"
+      },
+      {
+        "flag": "pop",
+        "desc": "Apply and remove latest stash"
+      }
+    ]
+  },
+  {
+    "title": "Git cherry-pick commit",
+    "command": "git cherry-pick <commit-hash>",
+    "description": "Apply specific commit from another branch to current branch.",
+    "tags": [
+      "git",
+      "cherry-pick",
+      "merge"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "git",
+    "flags": [
+      {
+        "flag": "-n",
+        "desc": "Don't commit, just stage changes"
+      },
+      {
+        "flag": "-x",
+        "desc": "Add 'cherry picked from' note"
+      },
+      {
+        "flag": "-e",
+        "desc": "Edit commit message"
+      },
+      {
+        "flag": "--continue",
+        "desc": "Continue after resolving conflicts"
+      },
+      {
+        "flag": "--abort",
+        "desc": "Cancel cherry-pick operation"
+      },
+      {
+        "flag": "commit1..commit2",
+        "desc": "Cherry-pick range of commits"
+      }
+    ]
+  },
+  {
+    "title": "Connect to MySQL",
+    "command": "mysql -u root -p -h localhost mydb",
+    "description": "Connect to MySQL database with username, password prompt, and specific database.",
+    "tags": [
+      "mysql",
+      "database",
+      "connection"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "database",
+    "flags": [
+      {
+        "flag": "-u user",
+        "desc": "Username for connection"
+      },
+      {
+        "flag": "-p",
+        "desc": "Prompt for password"
+      },
+      {
+        "flag": "-h host",
+        "desc": "Hostname or IP address"
+      },
+      {
+        "flag": "-P 3306",
+        "desc": "Port number"
+      },
+      {
+        "flag": "-e 'SELECT 1'",
+        "desc": "Execute SQL and exit"
+      },
+      {
+        "flag": "--ssl",
+        "desc": "Use SSL connection"
+      }
+    ]
+  },
+  {
+    "title": "Connect to PostgreSQL",
+    "command": "psql -U postgres -d mydb -h localhost",
+    "description": "Connect to PostgreSQL database with specific user, database, and host.",
+    "tags": [
+      "postgresql",
+      "database",
+      "connection"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "database",
+    "flags": [
+      {
+        "flag": "-U user",
+        "desc": "Username for connection"
+      },
+      {
+        "flag": "-d database",
+        "desc": "Database name"
+      },
+      {
+        "flag": "-h host",
+        "desc": "Hostname or IP address"
+      },
+      {
+        "flag": "-p 5432",
+        "desc": "Port number"
+      },
+      {
+        "flag": "-c 'SELECT 1'",
+        "desc": "Execute SQL and exit"
+      },
+      {
+        "flag": "-W",
+        "desc": "Force password prompt"
+      }
+    ]
+  },
+  {
+    "title": "Redis monitor commands",
+    "command": "redis-cli monitor",
+    "description": "Watch all Redis commands in real-time for debugging and monitoring.",
+    "tags": [
+      "redis",
+      "monitoring",
+      "debugging"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "database",
+    "flags": [
+      {
+        "flag": "monitor",
+        "desc": "Stream all commands to server"
+      },
+      {
+        "flag": "-h host",
+        "desc": "Redis server hostname"
+      },
+      {
+        "flag": "-p 6379",
+        "desc": "Redis server port"
+      },
+      {
+        "flag": "-a password",
+        "desc": "Authentication password"
+      },
+      {
+        "flag": "-n 0",
+        "desc": "Database number"
+      },
+      {
+        "flag": "--latency",
+        "desc": "Monitor latency"
+      }
+    ]
+  },
+  {
+    "title": "AWS S3 list buckets",
+    "command": "aws s3 ls",
+    "description": "List all S3 buckets in your AWS account.",
+    "tags": [
+      "aws",
+      "s3",
+      "cloud"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cloud",
+    "flags": [
+      {
+        "flag": "ls",
+        "desc": "List buckets or objects"
+      },
+      {
+        "flag": "s3://bucket",
+        "desc": "List objects in specific bucket"
+      },
+      {
+        "flag": "--recursive",
+        "desc": "List all objects recursively"
+      },
+      {
+        "flag": "--human-readable",
+        "desc": "Display sizes in human format"
+      },
+      {
+        "flag": "--summarize",
+        "desc": "Show total objects and size"
+      },
+      {
+        "flag": "--profile name",
+        "desc": "Use specific AWS profile"
+      }
+    ]
+  },
+  {
+    "title": "AWS S3 sync directories",
+    "command": "aws s3 sync ./local s3://bucket/path",
+    "description": "Synchronize local directory with S3 bucket, uploading only changed files.",
+    "tags": [
+      "aws",
+      "s3",
+      "sync",
+      "backup"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "cloud",
+    "flags": [
+      {
+        "flag": "sync",
+        "desc": "Synchronize directories"
+      },
+      {
+        "flag": "--delete",
+        "desc": "Delete files not in source"
+      },
+      {
+        "flag": "--dryrun",
+        "desc": "Show what would be done"
+      },
+      {
+        "flag": "--exclude '*.tmp'",
+        "desc": "Exclude files matching pattern"
+      },
+      {
+        "flag": "--include '*.jpg'",
+        "desc": "Include only files matching pattern"
+      },
+      {
+        "flag": "--storage-class GLACIER",
+        "desc": "Set storage class"
+      }
+    ]
+  },
+  {
+    "title": "Find files by size",
+    "command": "find /path -type f -size +100M",
+    "description": "Find files larger than 100MB in specified directory tree.",
+    "tags": [
+      "find",
+      "files",
+      "size"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "files",
+    "flags": [
+      {
+        "flag": "-type f",
+        "desc": "Find files only (not directories)"
+      },
+      {
+        "flag": "-size +100M",
+        "desc": "Larger than 100MB"
+      },
+      {
+        "flag": "-size -1G",
+        "desc": "Smaller than 1GB"
+      },
+      {
+        "flag": "-name '*.log'",
+        "desc": "Match filename pattern"
+      },
+      {
+        "flag": "-mtime -7",
+        "desc": "Modified within 7 days"
+      },
+      {
+        "flag": "-exec rm {} \\;",
+        "desc": "Execute command on each file"
+      }
+    ]
+  },
+  {
+    "title": "Monitor system resources",
+    "command": "htop",
+    "description": "Interactive process viewer with CPU, memory, and system load monitoring.",
+    "tags": [
+      "monitoring",
+      "processes",
+      "system"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "monitoring",
+    "flags": [
+      {
+        "flag": "-d 1",
+        "desc": "Update delay in seconds"
+      },
+      {
+        "flag": "-u user",
+        "desc": "Show only processes of user"
+      },
+      {
+        "flag": "-p PID",
+        "desc": "Show only specific process"
+      },
+      {
+        "flag": "-s COLUMN",
+        "desc": "Sort by column"
+      },
+      {
+        "flag": "-t",
+        "desc": "Show process tree"
+      },
+      {
+        "flag": "-H",
+        "desc": "Show threads"
+      }
+    ]
+  },
+  {
+    "title": "Network connections",
+    "command": "netstat -tulpn",
+    "description": "Show all listening ports with process information (classic networking tool).",
+    "tags": [
+      "networking",
+      "ports",
+      "netstat"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "networking",
+    "flags": [
+      {
+        "flag": "-t",
+        "desc": "Show TCP connections"
+      },
+      {
+        "flag": "-u",
+        "desc": "Show UDP connections"
+      },
+      {
+        "flag": "-l",
+        "desc": "Show only listening ports"
+      },
+      {
+        "flag": "-p",
+        "desc": "Show process ID and name"
+      },
+      {
+        "flag": "-n",
+        "desc": "Show numerical addresses"
+      },
+      {
+        "flag": "-a",
+        "desc": "Show all connections"
+      }
+    ]
+  },
+  {
+    "title": "Disk usage by directory",
+    "command": "ncdu /",
+    "description": "Interactive disk usage analyzer with navigation and cleanup options.",
+    "tags": [
+      "disk",
+      "usage",
+      "interactive"
+    ],
+    "shell": "bash",
+    "danger": false,
+    "category": "files",
+    "flags": [
+      {
+        "flag": "-x",
+        "desc": "Don't cross filesystem boundaries"
+      },
+      {
+        "flag": "-e",
+        "desc": "Enable extended information"
+      },
+      {
+        "flag": "-r",
+        "desc": "Read-only mode (no delete)"
+      },
+      {
+        "flag": "-o file",
+        "desc": "Export results to file"
+      },
+      {
+        "flag": "-f file",
+        "desc": "Import results from file"
+      },
+      {
+        "flag": "--exclude pattern",
+        "desc": "Exclude files matching pattern"
+      }
+    ]
+  },
+  {
+    "title": "list directory",
+    "command": "ls",
+    "tags": [
+      "none"
+    ]
+  }
+]
