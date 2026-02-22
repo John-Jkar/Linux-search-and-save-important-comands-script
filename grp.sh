@@ -19,7 +19,7 @@ add_command() {
   cat "$DB_FILE" | jq --arg t "$title" --arg c "$command" --arg tags "$tags_line" \
      '. += [ { title: $t, command: $c, tags: ($tags|split(",")) } ]' \
      > "$tmp" && mv "$tmp" "$DB_FILE"
-  echo "✅ Added: $title"
+  echo " Added: $title"
   exit 0
 }
 
@@ -36,7 +36,7 @@ copy_to_clipboard() {
   command -v xsel    >/dev/null 2>&1 && { xsel --clipboard --input; return; }
   command -v clip.exe >/dev/null 2>&1 && { clip.exe; return; }
   command -v pbcopy   >/dev/null 2>&1 && { pbcopy; return; }
-  echo "⚠️ No clipboard tool found (tried wl-copy, xclip, xsel, clip.exe, pbcopy)" >&2
+  echo " No clipboard tool found (tried wl-copy, xclip, xsel, clip.exe, pbcopy)" >&2
   return 1
 }
 
@@ -64,10 +64,10 @@ if [ "${PRINT:-0}" -eq 1 ]; then
   printf '%s\n' "$cmd"
 else
   printf '%s' "$cmd" | copy_to_clipboard || {
-    echo '❌ Failed to copy to clipboard. Install wl-clipboard, xclip, or xsel.' >&2
+    echo ' Failed to copy to clipboard. Install wl-clipboard, xclip, or xsel.' >&2
     exit 1
   }
-  echo "📋 Copied: $cmd"
+  echo " Copied: $cmd"
 fi
 
 
